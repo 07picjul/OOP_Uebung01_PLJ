@@ -24,11 +24,11 @@
 
 #include <Arduino.h>
 
-#define LED1 3    // Low-side switch (leuchtet mit LOW)
-#define LED2 5    // Low-side switch (leuchtet mit LOW)
-#define TASTER1 3 // LOW wenn gedrückt
-#define TASTER2 2 // LOW wenn gedrückt
-#define POT1 A7   
+#define LED1 A1    // Low-side switch (leuchtet mit LOW)
+#define LED2 A2    // Low-side switch (leuchtet mit LOW)
+#define TASTER1 6 // LOW wenn gedrückt
+#define TASTER2 5 // LOW wenn gedrückt
+#define POT1 A7  
 
 void setup()
 {
