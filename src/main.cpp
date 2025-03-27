@@ -51,7 +51,7 @@ void setup()
     Serial.println("..Start..\n");
 
     taster1.init(TASTER1, false, DB_ZEIT, LONGPRESSTIME);
-    a_blinker.init(LED1, LED2, BLINKTIME, ANALOGBLINKER_POLLTIME, true, true);
+    a_blinker.init(LED1, LED2, BLINKTIME, ANALOGBLINKER_POLLTIME, false, true);
 }
 
 void loop()
