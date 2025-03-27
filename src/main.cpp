@@ -23,19 +23,37 @@
 // ****************************************************************************
 
 #include <Arduino.h>
+#include <Bounce2.h>
 
-#define LED1 A1    // Low-side switch (leuchtet mit LOW)
-#define LED2 A2    // Low-side switch (leuchtet mit LOW)
+#define LED1 A1   // Low-side switch (leuchtet mit LOW)
+#define LED2 A2   // Low-side switch (leuchtet mit LOW)
 #define TASTER1 6 // LOW wenn gedrückt
 #define TASTER2 5 // LOW wenn gedrückt
-#define POT1 A7  
+#define POT1 A7
+
+Bounce bouncheTaster1 = Bounce();
+
+int ledState = LOW;
 
 void setup()
 {
     Serial.begin(115200); // Baud rate
     Serial.println("..Start..\n");
+
+    bouncheTaster1.attach(TASTER1, INPUT_PULLUP);
+
+    bouncheTaster1.interval(50);
+
+    pinMode(LED1, OUTPUT);
+    digitalWrite(LED1, ledState);
 }
 
 void loop()
 {
+    bouncheTaster1.update();
+
+    if (bouncheTaster1.rose())
+    {
+        digitalWrite(LED1, HIGH);
+    }
 }
