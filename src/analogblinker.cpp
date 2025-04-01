@@ -19,7 +19,7 @@ analogblinker::analogblinker(uint8_t _pin1, uint8_t _pin2, bool _enable)
     pin2 = _pin2;
     blinkTime = DEFAULT_BLINKTIME;
     polltime = DEFAULT_POLLTIME;
-    sync = true;
+    sync = false;
     enable = _enable;
 }
 

@@ -25,8 +25,8 @@
 #include <Arduino.h>
 #include "analogblinker.h"
 
-#define LED1 A1    // Low-side switch (leuchtet mit LOW)
-#define LED2 A2    // Low-side switch (leuchtet mit LOW)
+#define LED1 11    // Low-side switch (leuchtet mit LOW)
+#define LED2 10    // Low-side switch (leuchtet mit LOW)
 #define TASTER1 6 // LOW wenn gedrückt
 #define TASTER2 5 // LOW wenn gedrückt
 #define POT1 A7  
