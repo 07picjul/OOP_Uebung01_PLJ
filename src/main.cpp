@@ -39,11 +39,17 @@ void setup()
     Serial.begin(115200); // Baud rate
     Serial.println("..Start..\n");
 
-    // a_blinker.init(_pin1, _pin2, true);
+    pinMode(TASTER1, INPUT_PULLUP);
 }
 
 void loop()
 {
     a_blinker.poll();
 
+
+    if (Serial.available())
+    {
+        Serial.print((char)Serial.read());
+    }
+    
 }
