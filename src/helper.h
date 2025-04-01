@@ -2,7 +2,6 @@
 #define helper_h
 
 #include <Arduino.h>
-#include "analogblinker.h"
 /*
     ----------- INFO -------------
     Diese Struktur implementiert eine Taster-Auswertung.
@@ -14,7 +13,6 @@
 */
 struct button
 {
-    analogblinker test;
     // Member-Variable(n)
     bool in = false;
     bool neg = false;

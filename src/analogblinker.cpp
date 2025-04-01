@@ -1,16 +1,25 @@
 #include "analogblinker.h"
 
-// ****************************************************************************
-// ************************** analogblinker ************************************
-// ****************************************************************************
+#define DEFAULT_POLLTIME 20
+#define DEFAULT_BLINKTIME 200
 
-void analogblinker::init(uint8_t _pin1, uint8_t _pin2, uint16_t _blinkTime, uint8_t _polltime, bool _sync, bool _enable)
+analogblinker::analogblinker(uint8_t _pin1, uint8_t _pin2, uint16_t _blinkTime, uint8_t _polltime, bool _sync, bool _enable)
 {
     pin1 = _pin1;
     pin2 = _pin2;
     blinkTime = _blinkTime;
     polltime = _polltime;
     sync = _sync;
+    enable = _enable;
+}
+
+analogblinker::analogblinker(uint8_t _pin1, uint8_t _pin2, bool _enable)
+{
+    pin1 = _pin1;
+    pin2 = _pin2;
+    blinkTime = DEFAULT_BLINKTIME;
+    polltime = DEFAULT_POLLTIME;
+    sync = true;
     enable = _enable;
 }
 
