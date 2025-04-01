@@ -49,7 +49,25 @@ void loop()
 
     if (Serial.available())
     {
-        Serial.print((char)Serial.read());
+        uint8_t c = Serial.read();
+        Serial.println(c);
+        
+
+
+        // char c = Serial.read();
+        // Serial.print(c);
+        // if (c=='1')
+        // {
+        //     Serial.println("\nBlinker EIN");
+        //     a_blinker.enable = true;
+        // }
+        // else if (c=='2')
+        // {
+        //     Serial.println("\nBlinker AUS");
+        //     a_blinker.enable = false;
+        // }
+        
+        
     }
     
 }
