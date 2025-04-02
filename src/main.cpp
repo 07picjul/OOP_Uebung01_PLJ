@@ -71,9 +71,14 @@ void loop()
                 Serial.print("\nungültiger Wert! ");
             }
         }
-        else if(c == 'e')
+        else if(c == 'o')
         {
-            
+            a_blinker.enable = true;
         }
+        else if (c == 'f')
+        {
+            a_blinker.enable = false;
+        }
+        
     }
 }
