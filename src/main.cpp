@@ -25,14 +25,13 @@
 #include <Arduino.h>
 #include "analogblinker.h"
 
-#define LED1 11    // Low-side switch (leuchtet mit LOW)
-#define LED2 10    // Low-side switch (leuchtet mit LOW)
+#define LED1 11   // Low-side switch (leuchtet mit LOW)
+#define LED2 10   // Low-side switch (leuchtet mit LOW)
 #define TASTER1 6 // LOW wenn gedrückt
 #define TASTER2 5 // LOW wenn gedrückt
-#define POT1 A7  
+#define POT1 A7
 
 analogblinker a_blinker(LED1, LED2, true);
-
 
 void setup()
 {
@@ -42,32 +41,39 @@ void setup()
     pinMode(TASTER1, INPUT_PULLUP);
 }
 
+uint32_t wert = 0;
+
 void loop()
 {
     a_blinker.poll();
 
-
     if (Serial.available())
     {
-        // uint8_t c = Serial.read();
+        uint8_t c = Serial.read();
         // Serial.println(c);
 
-
-        char c = Serial.read();
-        Serial.print(c);
-        if (c=='1')
+        if (c >= '0' && c <= '9')
         {
-            Serial.println("\nBlinker ON");
-            a_blinker.enable = true;
+            c = c - '0';
+            Serial.print(c);
+            wert = (wert * 10) + c;
         }
-        else if (c=='2')
+        else if (c == 13)
         {
-            Serial.println("\nBlinker OFF");
-            a_blinker.enable = false;
+            if (wert > 0 && wert <= 2000)
+            {
+                Serial.print("\nBlink-Zeit: ");
+                Serial.println(wert);
+                a_blinker.blinkTime = wert;
+            }
+            else
+            {
+                Serial.print("\nungültiger Wert! ");
+            }
         }
-        
-        
-        
+        else if(c == 'e')
+        {
+            
+        }
     }
-    
 }
